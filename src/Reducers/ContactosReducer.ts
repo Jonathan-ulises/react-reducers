@@ -1,10 +1,10 @@
-import { ContactoUsr, ACCION_CONTACTO } from "../Model/Contacto.model";
+import { ContactoUsr, ACTION } from "../Model/Contacto.model";
 
 /*
 Refinimos un Reducer de contactos como una arrow function que recibe solo
 dos parametros que son: un state y un action
 */
-export const ContactosReducer = <T>(state: T[], action: ACCION_CONTACTO) => {  
+export const ContactosReducer = <T>(state: T[], action: ACTION<ContactoUsr>) => {  
   //Toda action tiene un tipo para lo cual agregamos un switch-case para determinar que tipo es.
   switch (action.type) {
     case 'add':
