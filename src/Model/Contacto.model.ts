@@ -9,6 +9,12 @@ export type ACCION_CONTACTO = {
     payload: ContactoUsr;
 }
 
+
+export enum CRUD_TYPE {
+    ADD = "add",
+    DELETE = "delete"
+}
+
 /**
  * Interface de acccion generica
  */

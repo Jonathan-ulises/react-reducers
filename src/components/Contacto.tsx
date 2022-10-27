@@ -22,7 +22,7 @@ const Contacto = () => {
   // Creamos el reducer pasandole el Reducer y un estado inicial.
   // const reducer = useReducer(ContactosReducer, contactos);
   // console.log({reducer})
-  const [state, dispatch] = useReducer(ContactosReducer, contactos);
+  const [state, dispatch] = useReducer(ContactosReducer<ContactoUsr>, contactos);
 
   return (
     <div className='container mt-3'>

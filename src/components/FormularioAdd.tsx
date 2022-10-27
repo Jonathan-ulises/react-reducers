@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { ACCION_CONTACTO, ACTION, ContactoUsr } from '../Model/Contacto.model';
+import { ACCION_CONTACTO, ACTION, ContactoUsr, CRUD_TYPE } from '../Model/Contacto.model';
 import { v4 as uuid} from 'uuid';
 
 type PropForm = {
@@ -24,7 +24,7 @@ const FormularioAdd = ({ dispatch }: PropForm) => {
 
   //Deefiniendo el Action para el dispatch
   const actionAdd: ACTION<ContactoUsr> = {
-    type: 'add',
+    type: CRUD_TYPE.ADD,
     payload: {
       id: uuid(),
       nombre,
