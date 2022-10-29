@@ -1,7 +1,13 @@
+export const KEY_STORATE = 'contactos';
+
 export interface ContactoUsr {
     id?: string,
-    nombre: string,
-    telefono: string
+    nombre?: string,
+    telefono?: string,
+    sexo?: string,
+    fechaNacimiento?: string,
+    edad?: number
+    imagen?: string,
 }
 
 export type ACCION_CONTACTO = {

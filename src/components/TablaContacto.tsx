@@ -1,11 +1,26 @@
 import React from 'react'
-import { ContactoUsr } from '../Model/Contacto.model';
+import { ACTION, ContactoUsr, CRUD_TYPE } from '../Model/Contacto.model';
 
 type TablaContactoProps = {
   contactos: ContactoUsr[];
+  dispatch: React.Dispatch<ACTION<ContactoUsr>>
 }
 
-const TablaContacto = ({contactos = []}: TablaContactoProps) => {
+const TablaContacto = ({contactos = [], dispatch}: TablaContactoProps) => {
+
+  // Definimos un metodo para controlar el evento del boton eliminar
+  const handlerDelete = (id: string) => {
+
+    const deleteAction: ACTION<ContactoUsr> = {
+      type: CRUD_TYPE.DELETE,
+      payload: {
+        id: id
+      }
+    };
+
+    dispatch(deleteAction);
+  }
+
   return (
     <table className='table'>
       <thead>
@@ -13,6 +28,10 @@ const TablaContacto = ({contactos = []}: TablaContactoProps) => {
           <th>ID</th>
           <th>Nombre</th>
           <th>Numero</th>
+          <th>Sexo</th>
+          <th>Fecha Nacimiento</th>
+          <th>Edad</th>
+          <th>Avatar</th>
           <th>Accion</th>
         </tr>
       </thead>
@@ -27,7 +46,11 @@ const TablaContacto = ({contactos = []}: TablaContactoProps) => {
                 <th>{finalId}</th>
                 <td>{contacto.nombre}</td>
                 <td>{contacto.telefono}</td>
-                <td><button className="btn btn-danger">Eliminar</button></td>
+                <td>{contacto.sexo}</td>
+                <td>{contacto.fechaNacimiento}</td>
+                <td>{contacto.edad}</td>
+                <td><img src={contacto.imagen} alt="avatar" style={{width: '100px'}} /></td>
+                <td><button className="btn btn-danger" onClick={ev => handlerDelete(contacto.id!)}>Eliminar</button></td>
               </tr>
             )
           })
